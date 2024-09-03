@@ -4,7 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import CartOrder from './component/CartOrder'
 
-function App() {
+function App(props) {
+  console.log("cartItems", props.cartItems)
+      
+
   const ProductData = [
     {
       image : "bag.png",
