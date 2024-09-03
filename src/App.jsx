@@ -56,6 +56,7 @@ function App() {
           </div>
           <div className=' w-16'>
             <img src=' cart.webp' alt='' />
+            <h1 className=' bg-red-700'>0</h1>
           </div>
         </div>
 
