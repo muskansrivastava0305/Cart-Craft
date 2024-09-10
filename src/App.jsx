@@ -102,37 +102,56 @@ function ProductData() {
             <h2 className=" font-normal text-4xl   text-[#2b5e78]">Craft</h2>
           </div>
           <DropdownMenu>
-          <DropdownMenuTrigger>
+            <DropdownMenuTrigger>
               <div>
                 <IconButton aria-label="cart">
-                  <StyledBadge badgeContent={getTotalCartQuantity()} color="secondary">
+                  <StyledBadge
+                    badgeContent={getTotalCartQuantity()}
+                    color="secondary"
+                  >
                     <ShoppingCartIcon />
                   </StyledBadge>
                 </IconButton>
               </div>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent>
-            <li className=" flex">
+            <DropdownMenuContent className="w-64 bg-white shadow-lg rounded-lg p-4">
               {cart.length === 0 ? (
-                <DropdownMenuLabel>No items in cart</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-center text-gray-500">
+                  No items in cart
+                </DropdownMenuLabel>
               ) : (
-               
-                cart.map((product, index) => (
-                  <DropdownMenuItem key={index}>
-                    <CartOrder
-                      key={product.id}
-                      image={product.image}
-                      itemName={product.itemName}
-                      price={product.price}
-                      id={product.id}
-                      
-                    />
-                   
-                  </DropdownMenuItem>
-                ))
+                <ul className="space-y-2">
+                  {cart.map((product, index) => (
+                    <li
+                      key={index}
+                      className="flex justify-between items-center p-2 border-b last:border-none"
+                    >
+                      {/* Image and Product Info */}
+                      <div className="flex items-center space-x-3">
+                        <img
+                          src={product.image}
+                          alt={product.itemName}
+                          className="w-12 h-12 rounded-md"
+                        />
+                        <div>
+                          <p className="font-semibold">{product.itemName}</p>
+                          <p className="text-sm text-gray-500">
+                            {product.price}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Quantity */}
+                      <div className="flex items-center space-x-2">
+                        <span className="text-gray-600">
+                          Qty: {product.quantity}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               )}
-               </li>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -20,6 +20,8 @@ const CartOrder = ({ id, image, itemName, price }) => {
         <h1>{itemName}</h1>
         <h1>{price}</h1>
       </div>
+
+      
       
       {product ? (
         <div className="flex justify-between mt-3">
@@ -28,7 +30,7 @@ const CartOrder = ({ id, image, itemName, price }) => {
           <button onClick={() => dispatch(incrementQuant(id))} className="px-2 py-1 bg-green-700 text-white rounded">+</button>
         </div>
       ) : (
-        <button onClick={handleAddToCart} className="mt-3 bg-blue-500 text-white py-2 px-4 rounded">Add to Cart</button>
+        <button onClick={handleAddToCart} className="mt-3 bg-[#2b5e78] text-white py-2 px-4 rounded w-full hover:bg-red-300 hover:text-black font-bold">Add to Cart</button>
       )}
     </div>
   );
