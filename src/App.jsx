@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import CartOrder from "./component/CartOrder";
 import { addToCart } from "./cartSlice";
+import { incrementQuant, decrementQuant } from "./cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DropdownMenu,
@@ -29,15 +30,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-// const StyledBadgeIconButton = styled(Badge)(({ theme }) => ({
-//   '& .MuiBadge-badge': {
-//     // add your custom styles for the IconButton badge here
-//     right: 0,
-//     top: 0,
-//     border: `none`,
-//     padding: '0 2px',
-//   },
-// }));
 
 function ProductData() {
   const cart = useSelector((state) => state.cart);
@@ -81,9 +73,16 @@ function ProductData() {
     },
   ];
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+  const handleIncrementQuant = (id) => {
+    dispatch(incrementQuant(id));
   };
+
+  const handleDecrementQuant = (id) => {
+    dispatch(decrementQuant(id));
+  };
+  // const handleAddToCart = (product) => {
+  //   dispatch(addToCart(product));
+  // };
   const getTotalCartQuantity = () => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   };
@@ -123,8 +122,7 @@ function ProductData() {
               ) : (
                 <ul className="space-y-2">
                   {cart.map((product, index) => (
-                    <li
-                      key={index}
+                    <li key={index}
                       className="flex justify-between items-center p-2 border-b last:border-none"
                     >
                       {/* Image and Product Info */}
@@ -142,11 +140,23 @@ function ProductData() {
                         </div>
                       </div>
 
-                      {/* Quantity */}
+                      {/* Quantity Controls */}
                       <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleDecrementQuant(product.id)}
+                          className="bg-red-500 text-white px-2 rounded hover:bg-red-700"
+                        >
+                          -
+                        </button>
                         <span className="text-gray-600">
-                          Qty: {product.quantity}
+                          {product.quantity}
                         </span>
+                        <button
+                          onClick={() => handleIncrementQuant(product.id)}
+                          className="bg-green-500 text-white px-2 rounded hover:bg-green-700"
+                        >
+                          +
+                        </button>
                       </div>
                     </li>
                   ))}
