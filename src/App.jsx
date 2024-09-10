@@ -132,13 +132,17 @@ function ProductData() {
                           alt={product.itemName}
                           className="w-12 h-12 rounded-md"
                         />
-                        <div>
-                          <p className="font-semibold">{product.itemName}</p>
-                          <p className="text-sm text-gray-500">
-                            {product.price}
-                          </p>
-                        </div>
-                      </div>
+                         <div>
+                      <p className="font-semibold">{product.itemName}</p>
+                      <p className="text-sm text-gray-500">
+                        {product.price} x {product.quantity}
+                      </p>
+                      <p className="font-semibold">
+                        Total: {product.price.replace('Rs. ', '') * product.quantity}
+                      </p>
+                    </div>
+                  </div>
+
 
                       {/* Quantity Controls */}
                       <div className="flex items-center space-x-2">
