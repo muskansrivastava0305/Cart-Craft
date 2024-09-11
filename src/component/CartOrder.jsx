@@ -12,25 +12,35 @@ const CartOrder = ({ id, image, itemName, price }) => {
   };
 
   return (
-    <div className="border shadow-md p-5 rounded-lg">
-      <div className="w-full h-64 border rounded-3xl">
-        <img src={image} alt={itemName} className="w-full h-full object-cover rounded-3xl" />
+    <div className="border shadow-md p-3 rounded-lg">
+      <div className=" w-full border rounded-3xl">
+        <img src={image} alt={itemName} className=" w-full h-52 object-cover rounded-3xl" />
       </div>
-      <div className="flex justify-between mt-3">
-        <h1>{itemName}</h1>
-        <h1>{price}</h1>
+      <div className="flex flex-row justify-between w-full items-center h-14 ">
+        <h1 className="  text-base">{itemName}</h1>
+        <h1 className="  font-bold text-base">{price}</h1>
       </div>
 
       
       
       {product ? (
-        <div className="flex justify-between mt-3">
-          <button onClick={() => dispatch(decrementQuant(id))} className="px-2 py-1 bg-red-700 text-white rounded">-</button>
-          <input value={product.quantity} readOnly className="text-center w-12"/>
-          <button onClick={() => dispatch(incrementQuant(id))} className="px-2 py-1 bg-green-700 text-white rounded">+</button>
+        <div className="flex justify-between ">
+          <button onClick={() => dispatch(decrementQuant(id))} className=" bg-red-700 py-2 px-4 text-white rounded w-full font-extrabold">-</button>
+          <input value={product.quantity} readOnly className="text-center w-full py-2 px-4"/>
+          <button onClick={() => dispatch(incrementQuant(id))} className="py-2 px-4 bg-green-700 text-white rounded w-full font-extrabold">+</button>
         </div>
       ) : (
-        <button onClick={handleAddToCart} className="mt-3 bg-[#2b5e78] text-white py-2 px-4 rounded w-full hover:bg-red-300 hover:text-black font-bold">Add to Cart</button>
+        <div className=" flex flex-col sm:flex-row gap-2">
+           <button onClick={handleAddToCart} className=" flex gap-4 justify-center items-center text-center bg-[#2b5e78]  border-[#2b5e78] border-2 text-white py-2 px-4 rounded
+         w-full text-lg hover:bg-[#2b5e78] hover:text-white font-bold"> 
+        <i class="fa-solid fa-greater-than"></i>
+         <h1>Buy Now</h1>
+         </button>
+         
+        <button onClick={handleAddToCart} className=" border-[#2b5e78] border-2 text-[#2b5e78]   py-1 px-1 rounded
+         w-full hover:bg-[#2b5e78] hover:text-white font-bold"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
+
+         </div>
       )}
     </div>
   );

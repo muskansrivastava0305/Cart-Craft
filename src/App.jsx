@@ -30,7 +30,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-
 function ProductData() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -80,20 +79,17 @@ function ProductData() {
   const handleDecrementQuant = (id) => {
     dispatch(decrementQuant(id));
   };
-  // const handleAddToCart = (product) => {
-  //   dispatch(addToCart(product));
-  // };
+
   const getTotalCartQuantity = () => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   };
-  // console.log(handleAddToCart)
 
   return (
     <div className=" ">
       {/* Home-Page */}
       <div className=" block lg:hidden md:block m-7">
         {/* nav-bar */}
-        <div className=" flex flex-row justify-between">
+        <div className=" flex flex-row justify-between w-full">
           <div className=" flex gap-2">
             <h1 className=" text-[#2b5e78]  font-extrabold font-serif text-5xl text">
               Cart
@@ -114,57 +110,72 @@ function ProductData() {
               </div>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="w-64 bg-white shadow-lg rounded-lg p-4">
+            <DropdownMenuContent className=" bg-white shadow-lg rounded-lg  w-[20rem] mr-2 max-w-md ">
               {cart.length === 0 ? (
-                <DropdownMenuLabel className="text-center text-gray-500">
+                <DropdownMenuLabel className="text-center text-gray-500 ">
                   No items in cart
                 </DropdownMenuLabel>
               ) : (
-                <ul className="space-y-2">
-                  {cart.map((product, index) => (
-                    <li key={index}
-                      className="flex justify-between items-center p-2 border-b last:border-none"
-                    >
-                      {/* Image and Product Info */}
-                      <div className="flex items-center space-x-3">
-                        <img
-                          src={product.image}
-                          alt={product.itemName}
-                          className="w-12 h-12 rounded-md"
-                        />
-                         <div>
-                      <p className="font-semibold">{product.itemName}</p>
-                      <p className="text-sm text-gray-500">
-                        {product.price} x {product.quantity}
-                      </p>
-                      <p className="font-semibold">
-                        Total: {product.price.replace('Rs. ', '') * product.quantity}
-                      </p>
-                    </div>
+                <div>
+                  <ul className=" w-full">
+                    {cart.map((product, index) => (
+                      <li
+                        key={index}
+                        className="flex justify-between items-center p-2 border-b last:border-none w-full"
+                      >
+                        {/* Image and Product Info */}
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src={product.image}
+                            alt={product.itemName}
+                            className="w-16 h-20 rounded-md "
+                          />
+                          <div className=" flex flex-col gap-1">
+                            <p className="font-semibold">{product.itemName}</p>
+                            <p className="text-sm text-gray-500">
+                              {product.price} x {product.quantity}
+                            </p>
+                            <p className="font-semibold">
+                              Total:{" "}
+                              {product.price.replace("Rs. ", "") *
+                                product.quantity}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Quantity Controls */}
+                        <div className="flex items-center space-x-2 border border-[#2b5e78] rounded-md ">
+                          <button
+                            onClick={() => handleDecrementQuant(product.id)}
+                            className="bg-red-500 text-white px-2 rounded hover:bg-red-700"
+                          >
+                            -
+                          </button>
+                          <span className="text-gray-600">
+                            {product.quantity}
+                          </span>
+                          <button
+                            onClick={() => handleIncrementQuant(product.id)}
+                            className="bg-green-500 text-white px-2 rounded hover:bg-green-700"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex justify-between items-center p-2 border-t">
+                    <p className="font-semibold">Grand Total:</p>
+                    <p className="font-semibold">
+                      Rs.{" "}
+                      {cart.reduce(
+                        (acc, item) =>
+                          acc + item.price.replace("Rs. ", "") * item.quantity,
+                        0
+                      )}
+                    </p>
                   </div>
-
-
-                      {/* Quantity Controls */}
-                      <div className="flex items-center space-x-2">
-                        <button
-                          onClick={() => handleDecrementQuant(product.id)}
-                          className="bg-red-500 text-white px-2 rounded hover:bg-red-700"
-                        >
-                          -
-                        </button>
-                        <span className="text-gray-600">
-                          {product.quantity}
-                        </span>
-                        <button
-                          onClick={() => handleIncrementQuant(product.id)}
-                          className="bg-green-500 text-white px-2 rounded hover:bg-green-700"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                </div>
               )}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -183,22 +194,22 @@ function ProductData() {
           />
         </div>
 
-        <div className=" flex flex-row w-full gap-2 mt-7 ml-10">
-          <div className=" flex w-full  font-medium gap-2 items-center">
-            <h1 className=" text-lg">Men</h1>
-            <i class="fa-solid fa-caret-down"></i>
+        <div className=" flex flex-row w-full gap-2 mt-5 items-center">
+          <div className=" flex w-full  font-medium gap-2 justify-center items-center">
+            <h1 className=" text-lg ">Men</h1>
+            <i class="fa-solid fa-caret-down "></i>
           </div>
-          <div className=" flex w-full text-center font-medium gap-2  items-center">
+          <div className=" flex w-full text-center font-medium gap-2  justify-center items-center">
             <h1 className=" text-lg"> Women</h1>
             <i class="fa-solid fa-caret-down"></i>
           </div>
-          <div className=" flex  w-full text-center font-medium gap-2  items-center">
+          <div className=" flex  w-full text-center font-medium gap-2 justify-center items-center">
             <h1 className=" text-lg">Baby-Kids</h1>
             <i class="fa-solid fa-caret-down"></i>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3  gap-4 mt-7 ">
+        <div className="grid grid-cols-2 sm:grid-cols-3  gap-4 mt-4 w-full ">
           {ProductData?.map((item, index) => (
             <CartOrder
               key={index}
