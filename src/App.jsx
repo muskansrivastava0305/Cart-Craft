@@ -31,6 +31,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function ProductData() {
+  const [searchQuery , setSearchQuery] = useState("")
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const ProductData = [
@@ -70,7 +71,27 @@ function ProductData() {
       itemName: "Neck-Band Blutooth",
       price: "Rs. 1999",
     },
+    {
+      id: 7,
+      image: "Toy.png",
+      itemName: "Teddy",
+      price: "Rs. 699",
+    },
+    {
+      id: 8,
+      image:"Baby-Frock.webp",
+      itemName: "Baby-Frock",
+      price: "Rs. 2500",
+    },
   ];
+
+  const handleSearch = (e) =>{
+    setSearchQuery(e.target.value);
+  }
+
+  const filterProducts = ProductData.filter((product) =>{
+    return product.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+  })
 
   const handleIncrementQuant = (id) => {
     dispatch(incrementQuant(id));
@@ -185,13 +206,19 @@ function ProductData() {
             <ShoppingCartIcon />
           </StyledBadge>
         </IconButton> */}
-        <div className=" border border-slate-950 rounded-sm mt-5">
+        <div className=" flex w-full mt-5">
+        <div className=" border border-slate-950 rounded-sm  w-full">
           <input
             type="text"
             id="myInput"
             placeholder="Search Prodcut"
             className=" h-11 w-full p-2 text-xl"
+            onChange={handleSearch}
           />
+        </div>
+        <div className=" flex justify-center items-center w-16  border shadow-sm ">
+        <button className="  "><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
         </div>
 
         <div className=" flex flex-row w-full gap-2 mt-5 items-center">
@@ -210,7 +237,7 @@ function ProductData() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3  gap-4 mt-4 w-full ">
-          {ProductData?.map((item, index) => (
+          {filterProducts?.map((item, index) => (
             <CartOrder
               key={index}
               image={item.image}
