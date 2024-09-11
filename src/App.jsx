@@ -36,17 +36,18 @@ function ProductData() {
   const dispatch = useDispatch();
   const ProductData = [
     {
-      id: 1,
-      image: "bag.png",
-      itemName: "Bag",
-      price: "Rs. 599",
+      id: 9,
+      image:"Ladies-Sandal.png",
+      itemName: "Ladies-sandle",
+      price: "Rs. 399",
     },
     {
-      id: 2,
-      image: "dress.png",
-      itemName: "Skirt-Top",
-      price: "Rs. 799",
+      id: 8,
+      image:"Headshet.png",
+      itemName: "Blutooth-Headshet",
+      price: "Rs. 3599",
     },
+  
     {
       id: 3,
       image: "dress2.png",
@@ -82,6 +83,18 @@ function ProductData() {
       image:"Baby-Frock.webp",
       itemName: "Baby-Frock",
       price: "Rs. 2500",
+    },
+    {
+      id: 1,
+      image: "bag.png",
+      itemName: "Bag",
+      price: "Rs. 599",
+    },
+    {
+      id: 2,
+      image: "dress.png",
+      itemName: "Skirt-Top",
+      price: "Rs. 799",
     },
   ];
 
@@ -251,7 +264,7 @@ function ProductData() {
 
         <div></div>
       </div>
-      <div className=" lg:block hidden md:hidden justify-center items-center ">
+      <div className=" lg:block hidden md:hidden justify-center items-center h-60">
         <h1 className="text-4xl text-center text-red-800">
           Website not supported on this device
         </h1>
