@@ -12,9 +12,9 @@ const CartOrder = ({ id, image, itemName, price }) => {
   };
 
   return (
-    <div className="border shadow-md p-3 rounded-lg">
-      <div className=" w-full border rounded-3xl">
-        <img src={image} alt={itemName} className=" w-full h-52 object-cover rounded-3xl" />
+    <div className="border shadow-md p-1 rounded-lg">
+      <div className=" border rounded-3xl">
+        <img src={image} alt={itemName} className=" w-48 h-48 object-cover rounded-3xl" />
       </div>
       <div className="flex flex-row justify-between w-full items-center h-14 ">
         <h1 className="  text-base">{itemName}</h1>

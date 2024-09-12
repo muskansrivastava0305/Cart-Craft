@@ -121,7 +121,7 @@ function ProductData() {
   return (
     <div className=" ">
       {/* Home-Page */}
-      <div className=" block lg:hidden md:block m-7">
+      <div className=" block lg:hidden md:block m-5">
         {/* nav-bar */}
         <div className=" flex flex-row justify-between w-full">
           <div className=" flex gap-2">
