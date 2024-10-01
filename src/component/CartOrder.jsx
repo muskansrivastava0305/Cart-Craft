@@ -13,9 +13,9 @@ const CartOrder = ({ id, image, itemName, price }) => {
 
   return (
     <div className="border shadow-md p-1 rounded-lg">
-      <div className=" border rounded-3xl">
-        <img src={image} alt={itemName} className=" w-48 h-48 object-cover rounded-3xl" />
-      </div>
+      <div className="w-full h-52 border rounded-3xl md:h-80 lg:h-96 md:max-w-md lg:max-w-lg">
+  <img src={image} alt={itemName} className="w-full h-full object-cover rounded-3xl" />
+</div>
       <div className="flex flex-row justify-between w-full items-center h-14 ">
         <h1 className="  text-base">{itemName}</h1>
         <h1 className="  font-bold text-base">{price}</h1>
@@ -31,10 +31,10 @@ const CartOrder = ({ id, image, itemName, price }) => {
       
       
       {product ? (
-        <div className="flex justify-between h-9 ">
-          <button onClick={() => dispatch(decrementQuant(id))} className=" bg-red-700 py-2 px-4 text-white h-9 rounded w-full font-extrabold">-</button>
+        <div className="flex justify-between h-9  rounded border border-[#2b5e78] bg-slate-300vsZ">
+          <button onClick={() => dispatch(decrementQuant(id))} className=" py-2 px-4 border border-e-[#2b5e78]  h-9 rounded w-full font-extrabold">-</button>
           <input value={product.quantity} readOnly className="text-center w-full py-2 px-4"/>
-          <button onClick={() => dispatch(incrementQuant(id))} className="py-2 px-4 bg-green-700 text-white rounded w-full font-extrabold">+</button>
+          <button onClick={() => dispatch(incrementQuant(id))} className="py-2 px-4 border border-s-[#2b5e78] rounded w-full font-extrabold">+</button>
         </div>
       ) : (
        

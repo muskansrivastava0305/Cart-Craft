@@ -229,9 +229,9 @@ function ProductData() {
             onChange={handleSearch}
           />
         </div>
-        <div className=" flex justify-center items-center w-16  border shadow-sm ">
+        {/* <div className=" flex justify-center items-center w-16  border shadow-sm ">
         <button className="  "><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
+        </div> */}
         </div>
 
         <div className=" flex flex-row w-full gap-2 mt-5 items-center">
